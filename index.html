@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="istockphoto-1276606296-1024x1024.jpg" type="image/x-icon">
+    <title>BMI Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        ::placeholder {
+            color: rgb(0, 0, 0);
+            font-weight: 800;
+        }
+
+        input {
+            width: 160px;
+            border-radius: 5px;
+            transition: 0.8s ease-in-out;
+        }
+
+        .container {
+            height: 100vw;
+            padding-left: 50px;
+            transition: 1s ease-in-out;
+            background-color: transparent;
+            background-image: url(istockphoto-1276606296-1024x1024-removebg-preview\ \(1\).png);
+            background-position: 0px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            text-shadow: -5px -3px 7px white;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #f39494, #7c96e4, #60b9fd, #6def6f, #d1f79d, #b4d1e7);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s linear infinite alternate;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        #gif {
+            width: 80px;
+            height: 80px;
+            background-color: transparent;
+            background-image: url(72gi.gif);
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"> <br><br>
+        <h1><u>BMI Calculator</u></h1> <br>
+        <input type="text" placeholder="Your weight in kg" id="weight"> 
+        <input type="text" id="gif"> <br>
+        <br> <input type="text" placeholder="Your height in meter" id="height"> <br>
+        <br> <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+        <br><br><br>
+        <h1>Status</h1>
+        <input type="text" placeholder="Underweight" id="uw"> <br>
+        <input type="text" placeholder="Normal weight" id="nw"> <br>
+        <input type="text" placeholder="Overweight" id="ow"> <br>
+        <input type="text" placeholder="Obese" id="os"> <br>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        var weight = document.querySelector("#weight");
+        var height = document.querySelector("#height");
+        var uw = document.querySelector("#uw");
+        var nw = document.querySelector("#nw");
+        var ow = document.querySelector("#ow");
+        var os = document.querySelector("#os");
+        var ans;
+
+        function calculate() {
+            ans = parseFloat(weight.value) / parseFloat(height.value * height.value);
+            if (ans < 18.5) {
+                uw.style.backgroundColor = "red";
+                nw.style.backgroundColor = "";
+                ow.style.backgroundColor = "";
+                os.style.backgroundColor = "";
+            } else if (ans >= 18.5 && ans < 24.9) {
+                uw.style.backgroundColor = "";
+                nw.style.backgroundColor = "green";
+                ow.style.backgroundColor = "";
+                os.style.backgroundColor = "";
+            } else if (ans >= 25 && ans < 29.9) {
+                uw.style.backgroundColor = "";
+                nw.style.backgroundColor = "";
+                ow.style.backgroundColor = "yellow";
+                os.style.backgroundColor = "";
+            } else if (ans >= 30) {
+                uw.style.backgroundColor = "";
+                nw.style.backgroundColor = "";
+                ow.style.backgroundColor = "";
+                os.style.backgroundColor = "blue";
+            }
+        }
+    </script>
+</body>
+</html>
